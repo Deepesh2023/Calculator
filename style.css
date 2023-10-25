@@ -25,6 +25,24 @@ body {
   grid-template-rows: 1fr 3fr;
 }
 
+.calculatorDisplay {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#numberField {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+
+  font-size: 3.2em;
+  text-align: end;
+  color: #f1f5f9;
+}
+
 .calculatorButtons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
