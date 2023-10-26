@@ -1,16 +1,16 @@
 let initialNumber = 0;
 let finalNumber = 0;
-let operation;
+let operator;
 let displayNumber = "";
 const maxDisplayLength = 7;
 
 $("h1").append(displayNumber);
 
-if (displayNumber.length == 6) {
-  $(".button").off("click");
-}
-
 buttonResponse();
+
+// once any of the operation is performed
+// the displayNumber is stored on initialNumber
+// and the next displayNumber is stored on finalNumber
 
 // button functionalities
 function buttonResponse() {
@@ -96,42 +96,59 @@ function buttonResponse() {
     $("h1").append(displayNumber);
   });
 
+  $("#decimal").click(function () {
+    if (displayNumber.length == maxDisplayLength) {
+      return;
+    }
+    displayNumber += ".";
+    $("h1").empty();
+    $("h1").append(displayNumber);
+  });
+
   //   operations
   $("#A").click(function () {
     if (displayNumber.length == maxDisplayLength) {
       return;
     }
-    displayNumber += "+";
+    initialNumber = +displayNumber;
+    operator = "A";
     $("h1").empty();
-    $("h1").append(displayNumber);
-    operation = "A";
+    displayNumber = "";
   });
   $("#S").click(function () {
     if (displayNumber.length == maxDisplayLength) {
       return;
     }
-    displayNumber += "-";
+    initialNumber = +displayNumber;
+    operator = "S";
     $("h1").empty();
-    $("h1").append(displayNumber);
-    operation = "S";
+    displayNumber = "";
   });
   $("#M").click(function () {
     if (displayNumber.length == maxDisplayLength) {
       return;
     }
-    displayNumber += "x";
+    initialNumber = +displayNumber;
+    operator = "M";
     $("h1").empty();
-    $("h1").append(displayNumber);
-    operation = "M";
+    displayNumber = "";
   });
   $("#D").click(function () {
     if (displayNumber.length == maxDisplayLength) {
       return;
     }
-    displayNumber += "/";
+    initialNumber = +displayNumber;
+    operator = "D";
     $("h1").empty();
-    $("h1").append(displayNumber);
-    operation = "D";
+    displayNumber = "";
+  });
+  $("#result").click(function () {
+    // if (displayNumber.length == maxDisplayLength) {
+    //   return;
+    // }
+    finalNumber = +displayNumber;
+    $("h1").empty();
+    performingOperation(initialNumber, finalNumber, operator);
   });
 
   // clearing the numbers
@@ -147,4 +164,24 @@ function buttonResponse() {
     initialNumber = 0;
     finalNumber = 0;
   });
+}
+
+function performingOperation(value1, value2, operation) {
+  switch (operation) {
+    case "A":
+      initialNumber = value1 + value2;
+      break;
+    case "S":
+      initialNumber = value1 - value2;
+      break;
+    case "M":
+      initialNumber = value1 * value2;
+      break;
+    case "D":
+      initialNumber = value1 / value2;
+      break;
+  }
+  displayNumber = initialNumber;
+  $("h1").append(displayNumber);
+  return;
 }
