@@ -11,48 +11,41 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap"
       rel="stylesheet"
     />
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="calculatorBody">
       <!-- calculator body -->
       <div class="calculatorDisplay">
         <!-- display -->
-        <input
-          type="text"
-          id="numberField"
-          name="number"
-          required
-          minlength="1"
-          maxlength="11"
-          size="10"
-          value="0"
-        />
+        <h1></h1>
       </div>
       <div class="calculatorButtons">
         <!-- buttons -->
         <div class="buttonPart1">
-          <div class="button allClear">AC</div>
-          <div class="button operator">/</div>
-          <div class="button operator">X</div>
+          <div id="allClear">AC</div>
+          <div id="D" class="button operator">/</div>
+          <div id="M" class="button operator">X</div>
         </div>
         <div class="buttonPart2">
-          <div class="button">7</div>
-          <div class="button">8</div>
-          <div class="button">9</div>
-          <div class="button">4</div>
-          <div class="button">5</div>
-          <div class="button">6</div>
-          <div class="button">1</div>
-          <div class="button">2</div>
-          <div class="button">3</div>
-          <div class="button">0</div>
+          <div class="button seven">7</div>
+          <div class="button eight">8</div>
+          <div class="button nine">9</div>
+          <div class="button four">4</div>
+          <div class="button five">5</div>
+          <div class="button six">6</div>
+          <div class="button one">1</div>
+          <div class="button two">2</div>
+          <div class="button three">3</div>
+          <div class="button zero">0</div>
           <div class="button">.</div>
-          <div class="button"><</div>
+          <div id="backspace"><</div>
         </div>
         <div class="buttonPart3">
-          <div class="button operator">-</div>
-          <div class="button operator">+</div>
-          <div class="button equals">=</div>
+          <div id="S" class="button operator">-</div>
+          <div id="A" class="button operator">+</div>
+          <div id="result" class="button equals">=</div>
         </div>
       </div>
     </div>

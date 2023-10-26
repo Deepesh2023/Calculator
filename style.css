@@ -26,21 +26,11 @@ body {
 }
 
 .calculatorDisplay {
+  font-size: 2.5em;
+  color: #f1f5f9;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
-
-#numberField {
-  border: none;
-  outline: none;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-
-  font-size: 3.2em;
-  text-align: end;
-  color: #f1f5f9;
 }
 
 .calculatorButtons {
@@ -78,7 +68,9 @@ body {
   gap: 12px;
 }
 
-.button {
+.button,
+#allClear,
+#backspace {
   background-color: #94a3b8;
   color: #f1f5f9;
   font-size: 2.5em;
@@ -96,7 +88,7 @@ body {
   border: 3px solid #334155;
 }
 
-.allClear {
+#allClear {
   background-color: #f87171;
 }
 
