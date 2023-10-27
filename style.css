@@ -2,12 +2,17 @@
   margin: 0;
   border-radius: 8px;
   box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
-/* div {
-  border: 1px solid black;
-} */
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 body {
   height: 100vh;
@@ -26,7 +31,7 @@ body {
 }
 
 .calculatorDisplay {
-  font-size: 2.5em;
+  font-size: 4em;
   color: #f1f5f9;
   display: flex;
   justify-content: flex-end;

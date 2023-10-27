@@ -2,167 +2,176 @@ let initialNumber = 0;
 let finalNumber = 0;
 let operator;
 let displayNumber = "";
-const maxDisplayLength = 7;
+const maxDisplayLength = 8;
+const displayWidth = $(".calculatorDisplay").width();
 
-$("h1").append(displayNumber);
+$("p").append(displayNumber);
 
 buttonResponse();
-
-// once any of the operation is performed
-// the displayNumber is stored on initialNumber
-// and the next displayNumber is stored on finalNumber
 
 // button functionalities
 function buttonResponse() {
   // the numbers
   $(".zero").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += "0";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    $("p").append(displayNumber);
   });
   $(".one").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += "1";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
   $(".two").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
-      returnmaxDisplayLength;
+    if (displayNumber.length >= maxDisplayLength) {
+      return;
     }
+
     displayNumber += "2";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
   $(".three").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += "3";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
   $(".four").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += "4";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
   $(".five").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += "5";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
   $(".six").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += "6";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
   $(".seven").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += "7";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
   $(".eight").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += "8";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
   $(".nine").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += "9";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
 
   $("#decimal").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
+    if (displayNumber.length >= maxDisplayLength) {
       return;
     }
+
     displayNumber += ".";
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    textResize();
+    $("p").append(displayNumber);
   });
 
   //   operations
   $("#A").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
-      return;
-    }
     initialNumber = +displayNumber;
     operator = "A";
-    $("h1").empty();
+    $("p").empty();
     displayNumber = "";
   });
   $("#S").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
-      return;
-    }
     initialNumber = +displayNumber;
     operator = "S";
-    $("h1").empty();
+    $("p").empty();
     displayNumber = "";
   });
   $("#M").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
-      return;
-    }
     initialNumber = +displayNumber;
     operator = "M";
-    $("h1").empty();
+    $("p").empty();
     displayNumber = "";
   });
   $("#D").click(function () {
-    if (displayNumber.length == maxDisplayLength) {
-      return;
-    }
     initialNumber = +displayNumber;
     operator = "D";
-    $("h1").empty();
+    $("p").empty();
     displayNumber = "";
   });
+
   $("#result").click(function () {
     // if (displayNumber.length == maxDisplayLength) {
     //   return;
     // }
     finalNumber = +displayNumber;
-    $("h1").empty();
+    $("p").empty();
     performingOperation(initialNumber, finalNumber, operator);
+    finalNumber = 0;
   });
 
   // clearing the numbers
   $("#backspace").click(function () {
     displayNumber = displayNumber.slice(0, -1);
-    $("h1").empty();
-    $("h1").append(displayNumber);
+    $("p").empty();
+    $("p").append(displayNumber);
   });
 
   $("#allClear").click(function () {
-    $("h1").empty();
+    $("p").empty();
     displayNumber = "";
     initialNumber = 0;
     finalNumber = 0;
+    operator = "";
   });
 }
 
@@ -181,7 +190,31 @@ function performingOperation(value1, value2, operation) {
       initialNumber = value1 / value2;
       break;
   }
-  displayNumber = initialNumber;
-  $("h1").append(displayNumber);
+  displayNumber = initialNumber.toString();
+  $("p").append(displayNumber);
+  textResize();
   return;
 }
+
+// resizing the text to acomedate the length
+function textResize() {
+  let textWidth = $("p").width();
+  if (textWidth > (180 / 100) * displayWidth) {
+    displayNumber = "";
+    alert("Cannot display such large numbers.");
+    location.reload();
+  } else if (textWidth > (150 / 100) * displayWidth) {
+    $(".calculatorDisplay").css("fontSize", "2em");
+    return;
+  } else if (textWidth > (120 / 100) * displayWidth) {
+    $(".calculatorDisplay").css("fontSize", "2.5em");
+    return;
+  } else if (textWidth > displayWidth) {
+    $(".calculatorDisplay").css("fontSize", "3em");
+    return;
+  }
+
+  $(".calculatorDisplay").css("fontSize", "4em");
+  return;
+}
+
