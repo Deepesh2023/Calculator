@@ -202,8 +202,16 @@ $(document).ready(function () {
         initialNumber = initialNumber * finalNumber;
         break;
       case "D":
+        if (finalNumber == 0) {
+          displayNumber = "undefined";
+          break;
+        }
         initialNumber = initialNumber / finalNumber;
         break;
+    }
+    if (displayNumber == "undefined") {
+      alert("Cannot divide by zero!.");
+      location.reload();
     }
     displayNumber = initialNumber.toString();
     if (displayNumber.length > 20) {
