@@ -5,20 +5,21 @@ let displayNumber = "";
 const maxTextLength = 8;
 const displayWidth = $(".calculatorDisplay").width();
 let decimalButtonPressedOnce = false;
+let operatorPressedOnce = false;
 const reDot = /[.]/;
 
 $("p").append(displayNumber);
 
-buttonResponse();
+numberButtons();
+operatorButtons();
 
 // button functionalities
-function buttonResponse() {
+function numberButtons() {
   // the numbers
   $(".zero").click(function () {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "0";
     $("p").empty();
     textResize();
@@ -28,7 +29,6 @@ function buttonResponse() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "1";
     $("p").empty();
     textResize();
@@ -38,7 +38,6 @@ function buttonResponse() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "2";
     $("p").empty();
     textResize();
@@ -48,7 +47,6 @@ function buttonResponse() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "3";
     $("p").empty();
     textResize();
@@ -58,7 +56,6 @@ function buttonResponse() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "4";
     $("p").empty();
     textResize();
@@ -68,7 +65,6 @@ function buttonResponse() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "5";
     $("p").empty();
     textResize();
@@ -78,7 +74,6 @@ function buttonResponse() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "6";
     $("p").empty();
     textResize();
@@ -88,7 +83,6 @@ function buttonResponse() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "7";
     $("p").empty();
     textResize();
@@ -98,7 +92,6 @@ function buttonResponse() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "8";
     $("p").empty();
     textResize();
@@ -108,7 +101,6 @@ function buttonResponse() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
-
     displayNumber += "9";
     $("p").empty();
     textResize();
@@ -116,9 +108,6 @@ function buttonResponse() {
   });
 
   $("#decimal").click(function () {
-    if (displayNumber.length >= maxTextLength) {
-      return;
-    }
     if (decimalButtonPressedOnce == true) {
       return;
     }
@@ -130,27 +119,45 @@ function buttonResponse() {
     textResize();
     $("p").append(displayNumber);
   });
+}
 
+function operatorButtons() {
   //   operations
   $("#A").click(function () {
+    if (operatorPressedOnce == true) {
+      performOperation();
+    }
     operator = "A";
+    operatorPressedOnce = true;
     setInitialValue();
   });
   $("#S").click(function () {
+    if (operatorPressedOnce == true) {
+      performOperation();
+    }
     operator = "S";
+    operatorPressedOnce = true;
     setInitialValue();
   });
   $("#M").click(function () {
+    if (operatorPressedOnce == true) {
+      performOperation();
+    }
     operator = "M";
+    operatorPressedOnce = true;
     setInitialValue();
   });
   $("#D").click(function () {
+    if (operatorPressedOnce == true) {
+      performOperation();
+    }
     operator = "D";
+    operatorPressedOnce = true;
     setInitialValue();
   });
 
   $("#result").click(function () {
-    performingOperation(initialNumber, operator);
+    performOperation();
   });
 
   // clearing the numbers
@@ -166,7 +173,8 @@ function buttonResponse() {
     displayNumber = "";
     initialNumber = 0;
     finalNumber = 0;
-    operator = "";
+    operator = undefined;
+    operatorPressedOnce = false;
     decimalButtonPressedOnce = false;
   });
 }
@@ -176,9 +184,10 @@ function setInitialValue() {
   $("p").empty();
   displayNumber = "";
   decimalButtonPressedOnce = false;
+  return;
 }
 
-function performingOperation() {
+function performOperation() {
   finalNumber = +displayNumber;
   $("p").empty();
   switch (operator) {
@@ -196,7 +205,6 @@ function performingOperation() {
       break;
   }
   displayNumber = initialNumber.toString();
-  finalNumber = 0;
   if (displayNumber.length > 20) {
     alert("Cannot display such large numbers.");
     location.reload();
@@ -205,7 +213,8 @@ function performingOperation() {
   checkForDecimalPoints();
   $("p").append(displayNumber);
   textResize();
-  return;
+  operator = undefined;
+  operatorPressedOnce = false;
 }
 
 // resizing the text to acomedate the length
