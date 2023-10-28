@@ -10,11 +10,11 @@ const reDot = /[.]/;
 
 $("p").append(displayNumber);
 
-numberButtons();
+numbers();
 operatorButtons();
 
 // button functionalities
-function numberButtons() {
+function numbers() {
   // the numbers
   $(".zero").click(function () {
     if (displayNumber.length >= maxTextLength) {
@@ -101,6 +101,7 @@ function numberButtons() {
     if (displayNumber.length >= maxTextLength) {
       return;
     }
+
     displayNumber += "9";
     $("p").empty();
     textResize();
@@ -125,7 +126,7 @@ function operatorButtons() {
   //   operations
   $("#A").click(function () {
     if (operatorPressedOnce == true) {
-      performOperation();
+      -performOperation();
     }
     operator = "A";
     operatorPressedOnce = true;
@@ -181,7 +182,6 @@ function operatorButtons() {
 
 function setInitialValue() {
   initialNumber = +displayNumber;
-  $("p").empty();
   displayNumber = "";
   decimalButtonPressedOnce = false;
   return;
